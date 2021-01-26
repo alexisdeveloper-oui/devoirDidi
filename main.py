@@ -33,7 +33,7 @@ if len(list_of_pictures) != 0:
     print(str(i) + " des " + str(len(list_of_pictures)) + " photos disponibles sont carrées")
 
 else:
-    print("Veuillez créer un dossier pictures et ajouter des photos dedans. Le script ne détecte aucune photo")
+    print("Veuillez svp créer un dossier pictures et ajouter des photos dedans. Le script ne détecte aucune photo")
 # new_image = image.resize((200, 200))
 # new_image.save("image200.jpg")
 
