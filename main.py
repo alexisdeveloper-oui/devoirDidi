@@ -13,33 +13,24 @@ if len(list_of_pictures) != 0:
         print(image.format)  # Output: JPEG
 
         file = image.filename.split('\\')[1]
-        print(image.filename)
-        print(file[1])
+        print(file)
         w, h = image.size
-
-        '''# image.show()
-        # The pixel format used by the image. Typical values are "1", "L", "RGB", or "CMYK."
-        print(image.mode)  # Output: RGB
-
-
-        # Image size, in pixels. The size is given as a 2-tuple (width, height).
-        print(w)  # Output: (1920, 1280)
-
-        print(h)'''
 
         if w == h:
             print("la photo " + file + " est carrée et peut être recadrée")
             flag = True
-        elif h + h * .10 <= w <= h - h * .10 and not flag:
-            print("La photo n'est pas vraiment carrée, mais elle peut quand meme etre resize")
-            choix2 = int(input("Appuyez sur 1 pour oui, n'importe quoi d'autre pour non"))
+        elif (h - h * .10) <= w <= (h + h * .10):
+            print("La photo n'est pas vraiment carrée, mais elle peut quand même être resize sans « effouarage »")
+            choix2 = int(input("Appuyez sur 1 pour oui, n'importe quoi d'autre pour non\n"))
             if choix2 == 1:
                 flag = True
+        else:
+            flag = False
+            print("Cette photo ne peut définitivement pas être recadrée")
 
         if flag:
-            print("Choisissez l'une des deux options")
-            choix = int(input("1 : 200*200\n2 : 800*800\n\n"))
-            print(choix)
+            print("Choisissez l'une des trois options")
+            choix = int(input("1 : 200*200\n2 : 800*800\n3 : Ne rien faire\n\n"))
             if choix == 1:
                 print("oueoueoue")
                 new_image = image.resize((200, 200))
@@ -49,15 +40,16 @@ if len(list_of_pictures) != 0:
                 new_image = image.resize((800, 800))
                 new_image.save("pictures/" + file.split('.')[0] + '(800x800).jpg')
                 print("Image recadrée")
-            else:
-                print("wtf")
+            elif choix == 3:
+                print("Understandable, have a nice day")
         # Colour palette table, if any.
-        print(image.palette)  # Output: None
+        print("\n\n")  # Output: None
 
     print(str(i) + " des " + str(len(list_of_pictures)) + " photos disponibles sont carrées")
 
 else:
-    print("Veuillez créer un dossier pictures et ajouter des photos dedans. Le script ne détecte aucune photo")
+    print("Veuillez créer un dossier pictures et ajouter des photos en jpg dedans. Le script ne détecte aucune photo "
+          "dans ce format")
 # new_image = image.resize((200, 200))
 # new_image.save("image200.jpg")
 
