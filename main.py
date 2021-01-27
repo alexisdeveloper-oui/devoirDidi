@@ -2,6 +2,7 @@ from PIL import Image
 import glob
 
 i = 0
+flag = False
 # filename = input("Entrez le nom de la photo : ")
 
 list_of_pictures = glob.glob('pictures/*.jpg')
@@ -25,9 +26,18 @@ if len(list_of_pictures) != 0:
         print(w)  # Output: (1920, 1280)
 
         print(h)'''
+
         if w == h:
-            print("la photo " + file + " est carrée et peut être recadrée, choisissez l'une des deux options")
-            i += 1
+            print("la photo " + file + " est carrée et peut être recadrée")
+            flag = True
+        elif h + h * .10 <= w <= h - h * .10 and not flag:
+            print("La photo n'est pas vraiment carrée, mais elle peut quand meme etre resize")
+            choix2 = int(input("Appuyez sur 1 pour oui, n'importe quoi d'autre pour non"))
+            if choix2 == 1:
+                flag = True
+
+        if flag:
+            print("Choisissez l'une des deux options")
             choix = int(input("1 : 200*200\n2 : 800*800\n\n"))
             print(choix)
             if choix == 1:
