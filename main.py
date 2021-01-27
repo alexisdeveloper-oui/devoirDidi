@@ -11,22 +11,36 @@ if len(list_of_pictures) != 0:
         # The file format of the source file.
         print(image.format)  # Output: JPEG
 
-        file = image.filename.split('\\')
+        file = image.filename.split('\\')[1]
         print(image.filename)
         print(file[1])
-        # image.show()
+        w, h = image.size
+
+        '''# image.show()
         # The pixel format used by the image. Typical values are "1", "L", "RGB", or "CMYK."
         print(image.mode)  # Output: RGB
 
-        w, h = image.size
 
         # Image size, in pixels. The size is given as a 2-tuple (width, height).
         print(w)  # Output: (1920, 1280)
 
-        print(h)
+        print(h)'''
         if w == h:
-            print("cette image est carrée et peut être recadrée")
+            print("la photo " + file + " est carrée et peut être recadrée, choisissez l'une des deux options")
             i += 1
+            choix = int(input("1 : 200*200\n2 : 800*800\n\n"))
+            print(choix)
+            if choix == 1:
+                print("oueoueoue")
+                new_image = image.resize((200, 200))
+                new_image.save("pictures/" + file.split('.')[0] + "(200x200).jpg")
+                print("Image recadrée")
+            elif choix == 2:
+                new_image = image.resize((800, 800))
+                new_image.save("pictures/" + file.split('.')[0] + '(800x800).jpg')
+                print("Image recadrée")
+            else:
+                print("wtf")
         # Colour palette table, if any.
         print(image.palette)  # Output: None
 
