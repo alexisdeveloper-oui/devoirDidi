@@ -16,12 +16,14 @@ if len(list_of_pictures) != 0:
         print(file)
         w, h = image.size
 
-        if w == h: #Check if the photo's resolution is square
+        if w == h:  # Check if the photo's resolution is square
             print("la photo " + file + " est carrée et peut être recadrée")
             flag = True
-        elif (h - h * .10) <= w <= (h + h * .10): #if it's not square, it will check if the width is within 10% of the height
+        elif (h - h * .10) <= w <= (h + h * .10):  # if it's not square, it will check if the width is within a 10%
+            # margin of the height
+            # im bad at explainin
             print("La photo n'est pas vraiment carrée, mais elle peut quand même être resize sans « effouarage »")
-            choix2 = int(input("Appuyez sur 1 pour oui, n'importe quel autre chiffre pour non\n")) #asking user
+            choix2 = int(input("Appuyez sur 1 pour oui, n'importe quel autre chiffre pour non\n"))  # asking user
             if choix2 == 1:
                 flag = True
         else:
