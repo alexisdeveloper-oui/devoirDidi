@@ -3,7 +3,6 @@ import glob
 
 i = 0
 flag = False
-# filename = input("Entrez le nom de la photo : ")
 
 list_of_pictures = glob.glob('pictures/*.jpg')
 if len(list_of_pictures) != 0:
@@ -52,7 +51,3 @@ if len(list_of_pictures) != 0:
 else:
     print("Veuillez créer un dossier pictures et ajouter des photos en jpg dedans. Le script ne détecte aucune photo "
           "dans ce format")
-# new_image = image.resize((200, 200))
-# new_image.save("image200.jpg")
-
-# print(new_image.size)
