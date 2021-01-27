@@ -22,7 +22,7 @@ if len(list_of_pictures) != 0:
         elif (h - h * .10) <= w <= (h + h * .10):  # if it's not square, it will check if the width is within a 10%
             # margin of the height
             # im bad at explaining
-            print("La photo n'est pas vraiment carrée, mais elle peut quand même être resize sans « effouarage »")
+            print("La photo" + file + " n'est pas vraiment carrée, mais elle peut quand même être resize sans « effouarage »")
             choix2 = int(input("Appuyez sur 1 pour oui, n'importe quel autre chiffre pour non\n"))  # asking user
             if choix2 == 1:
                 flag = True
@@ -32,18 +32,16 @@ if len(list_of_pictures) != 0:
 
         if flag:
             print("Choisissez l'une des trois options")
-            choix = int(input("1 : 200*200\n2 : 800*800\n3 : Ne rien faire\n\n"))
+            choix = int(input("1 : 200*200 et 800*800\n2 : Ne rien faire\n\n"))
             if choix == 1:
                 new_image = image.resize((200, 200))
                 new_image.save("pictures/" + file.split('.')[0] + "(200x200).jpg")
                 print("Image recadrée")
-            elif choix == 2:
                 new_image = image.resize((800, 800))
                 new_image.save("pictures/" + file.split('.')[0] + '(800x800).jpg')
                 print("Image recadrée")
-            elif choix == 3:
-                print("Understandable, have a nice day")
-
+            elif choix == 2:
+                print("okok")
         print("\n\n")
 
 else:
