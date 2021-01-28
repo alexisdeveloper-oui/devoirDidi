@@ -15,11 +15,11 @@ def resize(width, height) -> object:
     :return: message de confirmation
     """
     nouvelle_image = image.resize((width, height))
-    nouvelle_image.save("pictures/" + file.split('.')[0] + "(" + width + "x" + height + ").jpg")
+    nouvelle_image.save("pictures/" + file.split('.')[0] + "(" + str(width) + "x" + str(height) + ").jpg")
     return "Image recadrée"
 
 
-if len(list_of_pictures) != 0:
+if len(list_of_pictures) != 0:  # Check if there's pictures in the folder
     print("il y a " + str(len(list_of_pictures)) + " photos dans le dossier\n")
     for picture in list_of_pictures:
         image = Image.open(picture)
@@ -47,12 +47,15 @@ if len(list_of_pictures) != 0:
 
         if flag:
             print("Choisissez l'une des trois options")
-            choix = int(input("1 : 200x200 et 800x800\n2 : 172x172 \n3: Ne rien faire\n\n"))
+            choix = int(input("1 : 200x200 et 800x800\n2 : 172x172 \n3: Résolution custom\n4: Ne rien faire\n\n"))
             if choix == 1:
                 print(resize(200, 200))
                 print(resize(800, 800))
             elif choix == 2:
                 print(resize(172, 172))
+            elif choix == 3:
+                res = int(input(("Entrez hauteur : ")))
+                print(resize(res, res))
             else:
                 print("y faut rien recadrer")
         print("\n\n")
