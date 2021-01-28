@@ -5,6 +5,20 @@ i = 0
 flag = False
 
 list_of_pictures = glob.glob('pictures/*.jpg')
+
+
+def resize(w, h) -> object:
+    """
+
+    :param w: La largeur de la photo
+    :param h: La hauteur de la photo
+    :return: message de confirmation
+    """
+    nouvelle_image = image.resize((200, 200))
+    nouvelle_image.save("pictures/" + file.split('.')[0] + "(200x200).jpg")
+    return "Image recadrée"
+
+
 if len(list_of_pictures) != 0:
     print("il y a " + str(len(list_of_pictures)) + " photos dans le dossier\n")
     for picture in list_of_pictures:
@@ -22,7 +36,8 @@ if len(list_of_pictures) != 0:
         elif (h - h * .10) <= w <= (h + h * .10):  # if it's not square, it will check if the width is within a 10%
             # margin of the height
             # im bad at explaining
-            print("La photo " + file + " n'est pas vraiment carrée, mais elle peut quand même être resize sans « effouarage »")
+            print(
+                "La photo " + file + " n'est pas vraiment carrée, mais elle peut quand même être resize sans « effouarage »")
             choix2 = int(input("Appuyez sur 1 pour oui, n'importe quel autre chiffre pour non\n"))  # asking user
             if choix2 == 1:
                 flag = True
@@ -34,16 +49,10 @@ if len(list_of_pictures) != 0:
             print("Choisissez l'une des trois options")
             choix = int(input("1 : 200x200 et 800x800\n2 : 172x172 \n3: Ne rien faire\n\n"))
             if choix == 1:
-                new_image = image.resize((200, 200))
-                new_image.save("pictures/" + file.split('.')[0] + "(200x200).jpg")
-                print("Image recadrée")
-                new_image = image.resize((800, 800))
-                new_image.save("pictures/" + file.split('.')[0] + '(800x800).jpg')
-                print("Image recadrée")
+                print(resize(200, 200))
+                print(resize(800, 800))
             elif choix == 2:
-                new_image = image.resize((172, 172))
-                new_image.save("pictures/" + file.split('.')[0] + "(172x172).jpg")
-                print("Image recadrée")
+                print(resize(172, 172))
             else:
                 print("y faut rien recadrer")
         print("\n\n")
