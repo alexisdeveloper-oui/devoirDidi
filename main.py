@@ -7,15 +7,15 @@ flag = False
 list_of_pictures = glob.glob('pictures/*.jpg')
 
 
-def resize(w, h) -> object:
+def resize(width, height) -> object:
     """
 
-    :param w: La largeur de la photo
-    :param h: La hauteur de la photo
+    :param width: La largeur de la photo
+    :param height: La hauteur de la photo
     :return: message de confirmation
     """
-    nouvelle_image = image.resize((200, 200))
-    nouvelle_image.save("pictures/" + file.split('.')[0] + "(200x200).jpg")
+    nouvelle_image = image.resize((width, height))
+    nouvelle_image.save("pictures/" + file.split('.')[0] + "(" + width + "x" + height + ").jpg")
     return "Image recadrée"
 
 
